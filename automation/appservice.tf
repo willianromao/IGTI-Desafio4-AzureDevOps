@@ -34,7 +34,7 @@ resource "azurerm_app_service" "MobEADv2-hml" {
 
 resource "azurerm_app_service_plan" "MobEADv2-plan-prd" {
   name                = "MobEADv2-plan-prd"
-  location            = "East US"
+  location            = "East US 2"
   resource_group_name = "AzureDevOps"
   kind                = "Linux"
   reserved            = true
@@ -48,7 +48,7 @@ resource "azurerm_app_service_plan" "MobEADv2-plan-prd" {
 
 resource "azurerm_app_service" "MobEADv2-prd" {
   name                = "mobeadv2-prd"
-  location            = "East US"
+  location            = "East US 2"
   resource_group_name = "AzureDevOps"
   app_service_plan_id = "${azurerm_app_service_plan.MobEADv2-plan-prd.id}"
 
