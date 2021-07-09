@@ -15,6 +15,7 @@ resource "azurerm_app_service_plan" "MobEADv2-plan-hml" {
   location            = "East US"
   resource_group_name = "AzureDevOps"
   kind                = "Linux"
+  reserved            = true
 
   sku {
     tier = "Free"
