@@ -14,6 +14,8 @@ resource "azurerm_app_service_plan" "MobEADv2-plan-hml" {
   name                = "MobEADv2-plan-hml"
   location            = "East US"
   resource_group_name = "AzureDevOps"
+  kind                = "Linux"
+  reserved            = true
 
   sku {
     tier = "Free"
@@ -27,9 +29,5 @@ resource "azurerm_app_service" "MobEADv2-hml" {
   location            = "East US"
   resource_group_name = "AzureDevOps"
   app_service_plan_id = "${azurerm_app_service_plan.MobEADv2-plan-hml.id}"
-
-  site_config {
-    windows_fx_version = "DOTNETCORE|3.1"
-  }
 
 }
