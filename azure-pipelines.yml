@@ -21,9 +21,10 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'mkdir d:\a\1\MobEAD' 
+    script: 'mkdir d:\a\1\mobeadv2' 
+    script: 'ls' 
     #workingDirectory: # Optional
-    #failOnStderr: false # Optional
+    failOnStderr: true
 
 - task: NuGetToolInstaller@1
 
