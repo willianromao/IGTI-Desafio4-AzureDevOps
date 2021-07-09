@@ -29,7 +29,7 @@ resource "azurerm_app_service" "MobEADv2-hml" {
   app_service_plan_id = "${azurerm_app_service_plan.MobEADv2-plan-hml.id}"
 
   site_config {
-    dotnet_core_version = "v3.1"
+    windows_fx_version = "DOTNETCORE|3.1"
   }
 
 }
