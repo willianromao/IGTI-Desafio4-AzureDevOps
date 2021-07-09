@@ -1,11 +1,9 @@
 terraform {
   required_version = ">= 0.11"
   backend "azurerm" {
-    storage_account_name = "$(tfstorage)"
+    storage_account_name = "mobeadv2"
     container_name = "terraform"
     key = "terraform.tfstate"
-    access_key ="$(storagechave)"
-    features{}
     }
   }
   provider "azurerm" {
