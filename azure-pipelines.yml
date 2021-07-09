@@ -4,21 +4,15 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
-- main
+- master
 
 pool:
   vmImage: 'windows-latest'
 
-# Command line
-# Run a command line script using Bash on Linux and macOS and cmd.exe on Windows
-
-
 variables:
-  solution: '**/mobeadv2/*.sln'
+  solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-
-
 
 steps:
 
@@ -27,11 +21,12 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'mkdir d:\a\1\MobEADv2' 
+    script: 'mkdir d:\a\1\MobEAD' 
     #workingDirectory: # Optional
     #failOnStderr: false # Optional
 
 - task: NuGetToolInstaller@1
+
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
@@ -39,7 +34,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\MobEADv2"'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployIisAppPath="Default Web Site" /p:DesktopBuildPackageLocation="d:\a\1\mobEAD"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
@@ -48,5 +43,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    testAssemblyVer2: '$(Build.SourcesDirectory)/test**.js'
+ 
+- task: CopyFiles@2
+  inputs:
+    contents: '**/*.*'
+    targetFolder: $(build.artifactStagingDirectory)
 
-- task: PublishPipelineArtifact@1
+- task: PublishBuildArtifacts@1
+  inputs:
+    artifactName: 'MobEAD'
+    pathToPublish: 'd:\a\1\a'
