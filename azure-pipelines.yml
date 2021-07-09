@@ -21,8 +21,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'mkdir d:\a\1\mobeadv2' 
-    script: 'ls' 
+    script: 'mkdir d:\a\1\mobeadv2 && ls' 
     #workingDirectory: # Optional
     failOnStderr: true
 
