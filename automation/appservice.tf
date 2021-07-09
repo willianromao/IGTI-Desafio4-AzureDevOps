@@ -13,7 +13,7 @@ terraform {
 }
 
 resource "azurerm_app_service_plan" "MobEADv2-plan-hml" {
-  name                = "$(appserviceplan)"
+  name                = "MobEADv2-plan-hml"
   location            = "East US"
   resource_group_name = "AzureDevOps"
   kind                = "Linux"
@@ -25,7 +25,7 @@ resource "azurerm_app_service_plan" "MobEADv2-plan-hml" {
 }
 
 resource "azurerm_app_service" "MobEADv2-plan-hml" {
-  name                = "$(appservice)"
+  name                = "mobeadv2-hml"
   location            = "East US"
   resource_group_name = "AzureDevOps"
   app_service_plan_id = "${azurerm_app_service_plan.MobEADv2-plan-hml.id}"
