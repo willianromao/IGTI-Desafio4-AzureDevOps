@@ -22,10 +22,6 @@ resource "azurerm_app_service_plan" "MobEADv2-plan-hml" {
     size = "F1"
   }
 
-  site_config {
-    linux_fx_version = "DOTNETCORE|3.1"
-  }
-
 }
 
 resource "azurerm_app_service" "MobEADv2-plan-hml" {
@@ -33,5 +29,9 @@ resource "azurerm_app_service" "MobEADv2-plan-hml" {
   location            = "East US"
   resource_group_name = "AzureDevOps"
   app_service_plan_id = "${azurerm_app_service_plan.MobEADv2-plan-hml.id}"
+
+  site_config {
+    linux_fx_version = "DOTNETCORE|3.1"
+  }
 
 }
