@@ -21,6 +21,11 @@ resource "azurerm_app_service_plan" "MobEADv2-plan-hml" {
     tier = "Free"
     size = "F1"
   }
+
+  site_config {
+    linux_fx_version = "DOTNETCORE|3.1"
+  }
+
 }
 
 resource "azurerm_app_service" "MobEADv2-plan-hml" {
