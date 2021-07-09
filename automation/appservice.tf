@@ -22,14 +22,14 @@ resource "azurerm_app_service_plan" "MobEADv2-plan-hml" {
 
 }
 
-resource "azurerm_app_service" "MobEADv2-plan-hml" {
+resource "azurerm_app_service" "MobEADv2-hml" {
   name                = "mobeadv2-hml"
   location            = "East US"
   resource_group_name = "AzureDevOps"
   app_service_plan_id = "${azurerm_app_service_plan.MobEADv2-plan-hml.id}"
 
   site_config {
-    linux_fx_version = "DOTNETCORE|3.1"
+    dotnet_core_version = "v3.1"
   }
 
 }
