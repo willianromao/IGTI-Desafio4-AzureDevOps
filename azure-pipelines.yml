@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: '**/*.sln'
+  solution: '**/mobeadv2/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -43,7 +43,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    testAssemblyVer2: '$(Build.SourcesDirectory)/test**.js'
+    testAssemblyVer2: '$(Build.SourcesDirectory)/mobeadv2/test**.js'
  
 - task: CopyFiles@2
   inputs:
@@ -52,5 +52,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    artifactName: 'MobEAD'
+    artifactName: 'MobEADv2'
     pathToPublish: 'd:\a\1\a'
